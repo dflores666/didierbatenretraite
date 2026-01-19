@@ -26,7 +26,7 @@
     <main class="container">
         <div class="layout">
             <div class="photo-container">
-                <img src="assets/didier.jpg" alt="Didier" class="photo" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 150 200%22><rect fill=%22%23e0e0e0%22 width=%22150%22 height=%22200%22 rx=%2210%22/><text x=%2250%%22 y=%2250%%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-size=%2260%22>👴</text></svg>'">
+                <img id="didierPhoto" alt="Didier" class="photo" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 150 200%22><rect fill=%22%23e0e0e0%22 width=%22150%22 height=%22200%22 rx=%2210%22/><text x=%2250%%22 y=%2250%%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-size=%2260%22>👴</text></svg>'">
             </div>
             
             <div class="content">
@@ -58,7 +58,7 @@
             <p class="joke" id="joke">Chargement de la blague du jour...</p>
         </div>
 
-        <button class="game-btn" onclick="window.open('game.html', 'DidierGame', 'width=500,height=600')">
+        <button class="game-btn" onclick="openGame()">
             🎮 Jouer en attendant
         </button>
         
@@ -70,7 +70,60 @@
         </div>
     </main>
     
+    <!-- Modal du jeu -->
+    <div class="game-modal" id="gameModal">
+        <div class="game-modal-content">
+            <button class="game-modal-close" onclick="closeGame()">✕</button>
+            <iframe id="gameFrame" src="" frameborder="0"></iframe>
+        </div>
+    </div>
+
+    <script src="assets/photos.js"></script>
     <script src="jokes.js"></script>
     <script src="script.js"></script>
+    <script>
+        // Charger une photo aléatoire de Didier
+        (function() {
+            const photo = document.getElementById('didierPhoto');
+            if (DIDIER_PHOTOS && DIDIER_PHOTOS.length > 0) {
+                const randomPhoto = DIDIER_PHOTOS[Math.floor(Math.random() * DIDIER_PHOTOS.length)];
+                photo.src = 'assets/' + randomPhoto;
+            } else {
+                photo.src = 'assets/didier.jpg'; // Fallback
+            }
+        })();
+    </script>
+    <script>
+        function openGame() {
+            const modal = document.getElementById('gameModal');
+            const frame = document.getElementById('gameFrame');
+            frame.src = 'game.html';
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            // Focus automatique sur l'iframe pour les contrôles clavier
+            frame.onload = () => {
+                frame.focus();
+                frame.contentWindow.focus();
+            };
+        }
+        
+        function closeGame() {
+            const modal = document.getElementById('gameModal');
+            const frame = document.getElementById('gameFrame');
+            modal.classList.remove('active');
+            frame.src = '';
+            document.body.style.overflow = '';
+        }
+        
+        // Fermer avec Escape
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeGame();
+        });
+        
+        // Fermer en cliquant à l'extérieur
+        document.getElementById('gameModal').addEventListener('click', (e) => {
+            if (e.target.id === 'gameModal') closeGame();
+        });
+    </script>
 </body>
 </html>

@@ -372,6 +372,12 @@
                 case ' ':
                     isPaused = !isPaused;
                     break;
+                case 'Escape':
+                    // Fermer la modal si on est dans une iframe
+                    if (window.parent && window.parent !== window) {
+                        window.parent.closeGame();
+                    }
+                    break;
             }
         });
 

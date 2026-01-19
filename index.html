@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO : Titre et description indexables -->
+    <title>Didier bat en Retraite - Le Compte à Rebours</title>
+    <meta name="description" content="Le compte à rebours officiel vers la grande retraite de Didier. Combien de jours avant la libération ?">
+    
+    <!-- Bloquer l'indexation du contenu de la page -->
+    <meta name="robots" content="noindex, follow">
+    
+    <!-- Open Graph pour les partages -->
+    <meta property="og:title" content="Didier bat en Retraite">
+    <meta property="og:description" content="Le compte à rebours officiel. Didier bat en retraite le 1er avril 2027.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://didierbatenretraite.fr">
+    
+    <!-- Favicon emoji retraite -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏖️</text></svg>">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main class="container">
+        <div class="layout">
+            <div class="photo-container">
+                <img src="assets/didier.jpg" alt="Didier" class="photo" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 150 200%22><rect fill=%22%23e0e0e0%22 width=%22150%22 height=%22200%22 rx=%2210%22/><text x=%2250%%22 y=%2250%%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-size=%2260%22>👴</text></svg>'">
+            </div>
+            
+            <div class="content">
+                <h1 class="title"><span class="title-name">Didier</span><br>bat en Retraite</h1>
+                
+                <div class="countdown-section">
+            <p class="countdown-label">Temps restant avant la liberté :</p>
+            <div class="countdown" id="countdown">
+                <div class="countdown-item">
+                    <span class="countdown-value" id="days">---</span>
+                    <span class="countdown-unit">jours</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-value" id="hours">--</span>
+                    <span class="countdown-unit">heures</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-value" id="minutes">--</span>
+                    <span class="countdown-unit">minutes</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-value" id="seconds">--</span>
+                    <span class="countdown-unit">secondes</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="joke-section">
+            <p class="joke" id="joke">Chargement de la blague du jour...</p>
+        </div>
+
+        <button class="game-btn" onclick="window.open('game.html', 'DidierGame', 'width=500,height=600')">
+            🎮 Jouer en attendant
+        </button>
+        
+                <footer class="footer">
+                    <p class="domain">didierbatenretraite.fr</p>
+                    <p>1er avril 2027 🐟</p>
+                </footer>
+            </div>
+        </div>
+    </main>
+    
+    <script src="jokes.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

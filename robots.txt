@@ -1,0 +1,14 @@
+# Robots.txt pour didierbatenretraite.fr
+# On bloque l'indexation des assets (images) mais on laisse le domaine indexable
+
+User-agent: *
+Disallow: /assets/
+Disallow: /jokes.js
+Disallow: /script.js
+
+# Autoriser l'accès à la page principale pour que le domaine soit trouvable
+Allow: /index.html
+Allow: /style.css
+
+# Sitemap (optionnel, non nécessaire pour un site d'une page)
+# Sitemap: https://didierbatenretraite.fr/sitemap.xml
